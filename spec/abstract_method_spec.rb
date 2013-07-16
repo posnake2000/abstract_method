@@ -38,6 +38,10 @@ describe Module do
       it "defines an abstract method in a subclass of that class" do
         AbstractClassChild.new.should have_abstract_method(:foo)
       end
+
+      it "defines an abstract method that takes any number of arguments" do
+        expect { AbstractClassChild.new.foo(1,2,3) }.to raise_error(AbstractMethodCalled)
+      end
     end
 
     describe "when used in a module" do
